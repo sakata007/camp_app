@@ -1,0 +1,18 @@
+<h1>新規投稿</h1>
+
+
+
+<br>
+
+<%= form_with model: @post, local: true do |form| %>
+  <p>タイトル</p>
+  <%= form.text_field :title %>
+  <p>投稿内容</p>
+  <%= form.text_field :content %>
+  <%= form.submit "投稿する" %>
+  <%= render "form", post: @post %>
+<% end %>
+
+<div>
+  <%= link_to "Back to posts", posts_path %>
+</div>

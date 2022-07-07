@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CampApp</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <header>
+      <%= link_to "campsite title", "/" %>
+    </header>
+
+    <div class="container">
+      <div class="side">
+        <div class="side_contents">
+          <% if current_user %>
+            <%= current_user.name %>
+          <% end %>
+          <%= link_to "posts", posts_path %>
+          <br>
+          <%= link_to "campsites", campsites_path %>
+
+        </div>
+      </div>
+
+      <div class="main">
+        <%= yield %>
+      </div>
+    </div>
+  </body>
+</html>
