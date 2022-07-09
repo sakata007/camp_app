@@ -11,8 +11,10 @@
   <%= form.text_field :content %>
   <%= form.submit "投稿する" %>
   <%= render "form", post: @post %>
+  <p>画像投稿</p>
+  <%= form.file_field :image %>
 <% end %>
 
 <div>
-  <%= link_to "Back to posts", posts_path %>
+  <!-- %= link_to "Back to posts", posts_path % -->
 </div>

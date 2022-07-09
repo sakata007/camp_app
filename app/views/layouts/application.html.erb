@@ -15,21 +15,27 @@
       <%= link_to "campsite title", "/" %>
     </header>
 
-    <div class="container">
+    <div class="fullpage-container">
       <div class="side">
         <div class="side_contents">
           <% if current_user %>
-            <%= current_user.name %>
+            <%= link_to current_user.name, users_show_path %>
           <% end %>
-          <%= link_to "posts", posts_path %>
-          <br>
-          <%= link_to "campsites", campsites_path %>
-
+          <ul>
+            <li>
+              <%= link_to "posts", posts_path %>
+            </li>
+            <li>
+              <%= link_to "campsites", campsites_path %>
+            </li>
+          </ul>
         </div>
       </div>
 
       <div class="main">
-        <%= yield %>
+        <div class="container">
+          <%= yield %>
+        </div>
       </div>
     </div>
   </body>

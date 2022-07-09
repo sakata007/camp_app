@@ -1,17 +1,63 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Posts</h1>
+<!-- ここから_form.html.erbの内容 -->
 
-<div id="posts">
-  <% @posts.each do |post| %>
-    <%= post.title %>
-    <%= post.content %>
-    <%= post.user.name %>
-    <!-- %= render post % -->
-    <!-- p  >
-      <%= link_to "Show this post", post %>
-    </!-->
+<%= form_with(model: @post) do |form| %>
+  <% if @post.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+        <% @post.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
   <% end %>
-</div>
+  <div>
+    <!-- %= form.submit % -->
+  </div>
+<% end %>
 
-<%= link_to "New post", new_post_path %>
+<!-- ここまで -->
+
+<p class="page-title">Posts</p>
+  <div class="post-new">
+    <!-- %= form_with model: @post, local: true do |form| % -->
+    <%= form_with model: @post do |form| %>
+      <h1>新規投稿</h1>
+      <p>タイトル</p>
+        <%= form.text_field :title %>
+      <p>投稿内容</p>
+        <%= form.text_field :content %>
+        <%= form.submit "投稿する" %>
+        <%= render "form", post: @post %>
+      <p>画像投稿</p>
+        <%= form.file_field :image %>
+    <% end %>
+  </div>
+
+  <div id="posts">
+    <% @posts.each do |post| %>
+      <div class="post-content">
+        <% if post.image_name? %>
+          <%= image_tag post.image_name.url %>
+        <% else %>
+          <div class="content-image">
+            <%= image_tag "/no-image.png", class:"post_image" %>
+          </div>
+        <% end %>
+
+        <div class="content-title">
+          <%= post.title %>
+        </div>
+        <div>
+          <%= post.content %>
+        </div>
+        <div>
+          <%= post.user.name %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  

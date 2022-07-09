@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :campsites
   resources :posts
   get "/" => "home#top"
+  get "users/show" => "users#show"
   devise_for :users, :controllers => {
     :registrations => 'users/registrations'
     }
