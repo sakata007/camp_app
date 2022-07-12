@@ -1,0 +1,13 @@
+<h1>ユーザー情報変更</h1>
+
+<%= form_with model: @user do |form| %>
+    <%= form.label "ニックネーム" %>
+    <%= form.text_field :nickname %>
+    <%= form.label "自己紹介"%>
+    <%= form.text_field :comment%>
+    <%= form.label "アイコン画像"%>
+    <%= form.file_field :image_name %>
+    <%= form.submit "変更する" %>
+<% end %>
+
+<%= <%= button_to "アカウント削除",  %>%>

@@ -1,3 +1,18 @@
+<h1>campsite</h1>
+
+<!-- %= image_tag @campsite.image_name % -->
+<%= @campsite.name %>
+<%= @campsite.prefecture + @campsite.municipalitie + @campsite.address %>
+<%= @campsite.introduction %>
+
+<% if current_user %>
+    <%= link_to "編集", edit_campsite_registration_path %>
+<% end %>
+
+
+
+
+
 <p style="color: green"><%= notice %></p>
 
 <%= render @campsite %>

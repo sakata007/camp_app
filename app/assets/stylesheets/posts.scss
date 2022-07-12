@@ -52,7 +52,39 @@
 }
 
 .post_image {
-    height: 45%;
-    width: 80%;
+    height: 200px;
+    width: 200px;
     margin-top: 20px;
+}
+
+// show
+
+.show-post-content {
+    height: 800px;
+    width: 800px;
+    margin: 0 20px 50px 20px;
+    background-color: rgb(166, 217, 91);
+    float: left;
+    border-radius: 30px;
+    padding: 20px;
+}
+
+.show-post-image {
+    display: inline-block;
+    height: 400px;
+    width: 400px;
+    margin-top: 20px;
+    float: left;
+}
+
+.show-infomation {
+    float: right;
+    width: 350px;
+    margin-left: 30px;
+}
+
+.show-content-title {
+    font-size: 60px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    padding: 10px 50px 10px 0;
 }

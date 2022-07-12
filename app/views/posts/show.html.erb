@@ -1,10 +1,39 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @post %>
+<div class="show-post-content">
+  <% if @post.image_name? %>
+    <div class="show-content-image">
+      <%= image_tag @post.image_name.url, class:"show-post-image"  %>
+    </div>
+  <% else %>
+    <div class="show-content-image">
+      <%= image_tag "/no-image.png", class:"show-post-image" %>
+    </div>
+    
+  <% end %>
+
+  <div class="show-infomation">
+    <div class="show-content-title">
+      <%= @post.title %>
+    </div>
+    <div class="show-content">
+      <%= @post.content %>
+    </div>
+    <div class="show-user-name">
+      <%= @post.user.name %>
+    </div>
+    <% if @post.user.name == current_user.name %>
+      <%= button_to "編集", edit_post_path, method: :get %>
+      <%= button_to "削除", post_path, method: :delete %>
+    <% end %>
+  </div>
+</div>
+
+<!-- %= render @post %>
 
 <div>
   <%= link_to "Edit this post", edit_post_path(@post) %> |
   <%= link_to "Back to posts", posts_path %>
 
   <%= button_to "Destroy this post", @post, method: :delete %>
-</div>
+</div -->

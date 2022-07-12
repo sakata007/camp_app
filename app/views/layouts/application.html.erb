@@ -19,14 +19,19 @@
       <div class="side">
         <div class="side_contents">
           <% if current_user %>
-            <%= link_to current_user.name, users_show_path %>
+            <%= link_to current_user.name, user_path(current_user) %>
           <% end %>
           <ul>
             <li>
-              <%= link_to "posts", posts_path %>
+              <%= link_to "投稿一覧", posts_path %>
             </li>
             <li>
-              <%= link_to "campsites", campsites_path %>
+              <%= link_to "キャンプ場一覧", campsites_path %>
+            </li>
+            <li>
+              <% if user_signed_in? %>
+                <%= button_to "ログアウト", destroy_user_session_path, method: :delete %>
+              <% end %>
             </li>
           </ul>
         </div>

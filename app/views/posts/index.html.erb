@@ -22,34 +22,39 @@
 <!-- ここまで -->
 
 <p class="page-title">Posts</p>
-  <div class="post-new">
+  <% if user_signed_in? %>
+    <div class="post-new">
     <!-- %= form_with model: @post, local: true do |form| % -->
-    <%= form_with model: @post do |form| %>
-      <h1>新規投稿</h1>
-      <p>タイトル</p>
-        <%= form.text_field :title %>
-      <p>投稿内容</p>
-        <%= form.text_field :content %>
-        <%= form.submit "投稿する" %>
-        <%= render "form", post: @post %>
-      <p>画像投稿</p>
-        <%= form.file_field :image %>
-    <% end %>
-  </div>
+      <%= form_with model: @post do |form| %>
+        <h1>新規投稿</h1>
+        <p>タイトル</p>
+          <%= form.text_field :title %>
+        <p>投稿内容</p>
+          <%= form.text_field :content %>        
+          <%= render "form", post: @post %>
+        <p>画像投稿</p>
+          <%= form.file_field :image_name %>
+          <%= form.submit "投稿する" %>
+      <% end %>
+    </div>
+  <% end %>
 
   <div id="posts">
     <% @posts.each do |post| %>
       <div class="post-content">
         <% if post.image_name? %>
-          <%= image_tag post.image_name.url %>
+          <div class="content-image">
+            <%= image_tag post.image_name.thumb.url  %>
+          </div>
         <% else %>
           <div class="content-image">
             <%= image_tag "/no-image.png", class:"post_image" %>
           </div>
+          
         <% end %>
 
         <div class="content-title">
-          <%= post.title %>
+          <%= link_to post.title, post_path(post) %>
         </div>
         <div>
           <%= post.content %>

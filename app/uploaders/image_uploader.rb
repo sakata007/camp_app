@@ -7,14 +7,14 @@ class ImageUploader < CarrierWave::Uploader::Base
   include CarrierWave::RMagick
 
 #上限変更
-  process :resize_to_limit => [700, 700]
+  process :resize_to_limit => [200, 200]
 
 #JPGで保存
   process :convert => 'jpg'
 
 #サムネイルを生成
   version :thumb do
-    process :resize_to_limit => [300, 300]
+    process :resize_to_limit => [200, 200]
   end
 
 # jpg,jpeg,gif,pngのみ
@@ -27,7 +27,7 @@ class ImageUploader < CarrierWave::Uploader::Base
     super.chomp(File.extname(super)) + '.jpg' 
   end
 
-#日付で保存
+# #日付で保存
   def filename
     if original_filename.present?
       time = Time.now

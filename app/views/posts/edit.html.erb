@@ -1,10 +1,21 @@
-<h1>Editing post</h1>
 
-<%= render "form", post: @post %>
+    <%= form_with model: @post do |form| %>
+      <h1>投稿編集</h1>
+      <p>タイトル</p>
+        <%= form.text_field :title %>
+      <p>投稿内容</p>
+        <%= form.text_field :content %>
+        <%= form.submit "投稿する" %>
+        <%= render "form", post: @post %>
+      <p>画像投稿</p>
+        <%= form.file_field :image_name %>
+    <% end %>
+
+<!--%= render "form", post: @post %>
 
 <br>
 
 <div>
   <%= link_to "Show this post", @post %> |
   <%= link_to "Back to posts", posts_path %>
-</div>
+</div -->

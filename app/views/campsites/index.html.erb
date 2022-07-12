@@ -1,14 +1,50 @@
-<p style="color: green"><%= notice %></p>
 
 <h1>Campsites</h1>
 
-<div id="campsites">
+  <div id="posts">
+    <% @campsites.each do |campsite| %>
+      <div class="post-content">
+<%
+=begin
+%>
+        <% if campsite.image_name %>
+          <div class="content-image">
+            <%= image_tag campsite.image_name.thumb.url  %>
+          </div>
+        <% else %>
+          <div class="content-image">
+            <%= image_tag "/no-image.png", class:"post_image" %>
+          </div>
+        <% end %> 
+<%
+=end
+%>
+
+        <div class="content-title">
+          <%= link_to campsite.name, campsite_path(campsite) %>
+        </div>
+        <div>
+          <%= campsite.prefecture + campsite.municipalitie + campsite.address %>
+        </div>
+        <div>
+          <%= campsite.introduction %>
+        </div>
+        
+      </div>
+    <% end %>
+  </div>
+
+  <br>
+  <%= link_to "キャンプ場を登録する", new_campsite_path %>
+
+  <p style="color: green"><%= notice %></p>
+
+  <div id="campsites">
   <% @campsites.each do |campsite| %>
     <%= render campsite %>
     <p>
-      <%= link_to "Show this campsite", campsite %>
+      <!-- %= link_to "Show this campsite", campsite % -->
     </p>
   <% end %>
 </div>
-
-<%= link_to "New campsite", new_campsite_path %>
+  

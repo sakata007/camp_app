@@ -1,2 +1,43 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h1>user</h1>
+
+<!-- %= image_tag @user.image_name % -->
+<%= @user.nickname %>
+<p>フォロー●人　フォロワー●人</p>
+<%= @user.comment %>
+
+<% if @user.name == current_user.name %>
+    <%= link_to "編集", edit_user_registration_path %>
+<% end %>
+
+<% if @user.name == current_user.name %>
+    <h1>自分の投稿</h1>
+<% else %>
+    <p>このユーザーの投稿</p>
+<% end %>
+
+<% @posts.each do |post| %>
+    <div class="post-content">
+    <% if post.image_name? %>
+        <div class="content-image">
+        <%= image_tag post.image_name.thumb.url  %>
+        </div>
+    <% else %>
+        <div class="content-image">
+        <%= image_tag "/no-image.png", class:"post_image" %>
+        </div>
+        
+    <% end %>
+
+    <div class="content-title">
+        <%= link_to post.title, post_path(post) %>
+    </div>
+    <div>
+        <%= post.content %>
+    </div>
+    <div>
+        <%= post.user.name %>
+    </div>
+    </div>
+<% end %>
+
+

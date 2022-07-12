@@ -1,6 +1,22 @@
-<h1>New campsite</h1>
+<h1>キャンプ場登録</h1>
 
-<%= render "form", campsite: @campsite %>
+<%= form_with model: @campsite, local: true do |form| %>
+  <p>キャンプ場名</p>
+  <%= form.text_field :name %>
+  <p>都道府県</p>
+  <%= form.text_field :prefecture %>
+  <p>市区町村</p>
+  <%= form.text_field :municipalitie %>
+  <p>以降の住所</p>
+  <%= form.text_field :address %>
+  <p>キャンプ場の紹介</p>
+  <%= form.text_field :introduction %>
+  <p>画像投稿</p>
+  <%= form.file_field :image %>
+  <%= form.submit "投稿する" %>
+<% end %>
+
+<!-- %= render "form", campsite: @campsite % -->
 
 <br>
 

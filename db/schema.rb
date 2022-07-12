@@ -22,8 +22,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_07_075922) do
   end
 
   create_table "likes", force: :cascade do |t|
-    t.string "user_id"
-    t.string "post_id"
+    t.string "user_id", null: false
+    t.string "post_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -44,11 +44,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_07_075922) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.string "name"
+    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "nickname"
-    t.string "gender"
+    t.string "nickname", null: false
+    t.string "gender", null: false
     t.text "comment"
     t.string "image_name"
     t.index ["email"], name: "index_users_on_email", unique: true
