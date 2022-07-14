@@ -1,10 +1,26 @@
 <h1>Editing campsite</h1>
 
-<%= render "form", campsite: @campsite %>
+<%= form_with model: @campsite do |form| %>
+  <p>キャンプ場名</p>
+  <%= form.text_field :name %>
+  <p>都道府県</p>
+  <%= form.text_field :prefecture %>
+  <p>市区町村</p>
+  <%= form.text_field :municipalitie %>
+  <p>以降の住所</p>
+  <%= form.text_field :address %>
+  <p>キャンプ場の紹介</p>
+  <%= form.text_field :introduction %>
+  <p>画像投稿</p>
+  <%= form.file_field :image_name %>
+  <%= form.submit "更新する" %>
+<% end %>
+
+<!-- %= render "form", campsite: @campsite % -->
 
 <br>
 
 <div>
-  <%= link_to "Show this campsite", @campsite %> |
-  <%= link_to "Back to campsites", campsites_path %>
+  <%= link_to "キャンプ場の詳細画面に戻る", @campsite %> |
+  <%= link_to "キャンプ場一覧に戻る", campsites_path %>
 </div>

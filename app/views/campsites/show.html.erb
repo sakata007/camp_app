@@ -1,12 +1,14 @@
 <h1>campsite</h1>
 
 <!-- %= image_tag @campsite.image_name % -->
+
+<%= image_tag @campsite.image_name.thumb.url  %>
 <%= @campsite.name %>
 <%= @campsite.prefecture + @campsite.municipalitie + @campsite.address %>
 <%= @campsite.introduction %>
 
 <% if current_user %>
-    <%= link_to "編集", edit_campsite_registration_path %>
+    <%= link_to "編集", edit_campsite_path %>
 <% end %>
 
 
@@ -18,8 +20,8 @@
 <%= render @campsite %>
 
 <div>
-  <%= link_to "Edit this campsite", edit_campsite_path(@campsite) %> |
-  <%= link_to "Back to campsites", campsites_path %>
 
-  <%= button_to "Destroy this campsite", @campsite, method: :delete %>
+  <%= link_to "キャンプ場一覧に戻る", campsites_path %>
+
+  <%= button_to "キャンプ場を削除する", @campsite, method: :delete %>
 </div>

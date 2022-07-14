@@ -5,10 +5,12 @@
         <%= form.text_field :title %>
       <p>投稿内容</p>
         <%= form.text_field :content %>
-        <%= form.submit "投稿する" %>
         <%= render "form", post: @post %>
       <p>画像投稿</p>
         <%= form.file_field :image_name %>
+      <p>キャンプ場名</p>
+        <%= form.text_field :campsite_id %>
+      <%= form.submit "投稿する" %>
     <% end %>
 
 <!--%= render "form", post: @post %>

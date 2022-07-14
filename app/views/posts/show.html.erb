@@ -16,24 +16,69 @@
     <div class="show-content-title">
       <%= @post.title %>
     </div>
+
+  <% if current_user %>
+    <% if @post.liked_by?(current_user) %>
+      <%= button_to "いいね解除", "/posts/#{@post.id}/likes", method: :delete %>
+    <% else %>
+      <%= button_to "いいね！", "/posts/#{@post.id}/likes" %>
+    <% end %> 
+  <% end %>
+
+    <p>いいね数：<%= link_to @post.likes.count, "/posts/#{@post.id}/likes" %></p>
     <div class="show-content">
       <%= @post.content %>
     </div>
     <div class="show-user-name">
-      <%= @post.user.name %>
+      <%= link_to @post.user.name, user_path(@post.user) %>
     </div>
+
+  <% if current_user %>
     <% if @post.user.name == current_user.name %>
       <%= button_to "編集", edit_post_path, method: :get %>
       <%= button_to "削除", post_path, method: :delete %>
     <% end %>
+  <% end %>
+
   </div>
 </div>
-
+  <%= link_to "投稿一覧に戻る", posts_path %>
 <!-- %= render @post %>
 
 <div>
   <%= link_to "Edit this post", edit_post_path(@post) %> |
-  <%= link_to "Back to posts", posts_path %>
-
   <%= button_to "Destroy this post", @post, method: :delete %>
 </div -->
+
+  <% if current_user %>
+    <% if @post.user.id != current_user.id %>
+    <h1>このユーザーの他の投稿</h1>
+    <% @this_user_posts.each do |post| %>
+      <% if @post.id != post.id %>
+        <div class="post-content">
+          <% if post.image_name? %>
+            <div class="content-image">
+              <%= image_tag post.image_name.thumb.url  %>
+            </div>
+          <% else %>
+            <div class="content-image">
+              <%= image_tag "/no-image.png", class:"post_image" %>
+            </div>
+            
+          <% end %>
+
+          <div class="content-title">
+            <%= link_to post.title, post_path(post) %>
+          </div>
+          <div>
+            <%= post.content %>
+          </div>
+          <div>
+            <%= post.user.name %>
+          </div>
+        </div>
+        <% end %>
+    <% end %>
+  <% end %>
+<% end %> 
+

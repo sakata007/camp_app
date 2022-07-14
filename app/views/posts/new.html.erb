@@ -13,6 +13,8 @@
   <%= render "form", post: @post %>
   <p>画像投稿</p>
   <%= form.file_field :image %>
+  <p>キャンプ場名</p>
+  <%= form.text_field :campsite_id %>
 <% end %>
 
 <div>

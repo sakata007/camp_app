@@ -1,0 +1,14 @@
+<h1>いいねした人</h1>
+
+<%
+=begin%>
+ <% @users.each do |user| %>
+    <%= image_tag post.image_name.thumb.url %>
+    <%= link_to user.name, user_path(user) %> 
+<%
+=end%>
+
+<% @likes.each do |like| %>
+<%= like.user.name %>
+
+<% end %>

@@ -34,6 +34,8 @@
           <%= render "form", post: @post %>
         <p>画像投稿</p>
           <%= form.file_field :image_name %>
+        <p>キャンプ場名</p>
+          <%= form.text_field :campsite_id %>
           <%= form.submit "投稿する" %>
       <% end %>
     </div>
@@ -50,19 +52,30 @@
           <div class="content-image">
             <%= image_tag "/no-image.png", class:"post_image" %>
           </div>
-          
         <% end %>
 
         <div class="content-title">
           <%= link_to post.title, post_path(post) %>
         </div>
-        <div>
-          <%= post.content %>
-        </div>
-        <div>
-          <%= post.user.name %>
-        </div>
+
+        <% if current_user %>
+          <% if post.liked_by?(current_user) %>
+            <%= button_to "いいね解除", "/posts/#{post.id}/likes", method: :delete %>
+          <% else %>
+            <%= button_to "いいね！", "/posts/#{post.id}/likes" %>
+          <% end %> 
+        <% end %>
+
+    <p>いいね数：<%= link_to post.likes.count, "/posts/#{post.id}/likes" %></p>
+    <div class="show-content">
+      <div>
+        <%= post.content %>
       </div>
-    <% end %>
+      <div>
+        <%= link_to post.user.name, user_path(post.user) %>
+      </div>
+    </div>
   </div>
+    <% end %>
+  
   
