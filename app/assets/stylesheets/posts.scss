@@ -20,16 +20,7 @@
     color: aliceblue;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
-.page-title {
-    display: inline-block;
-    // margin: 20px 20px 50px;
-    border: 1px black solid;
-    width: 100%;
-    // margin: 0 auto;
-    // text-align: center;
-    font-size: 100px;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-}
+
 
 .search-wrapper {
     width: 100%;
@@ -96,6 +87,7 @@
     float: right;
     width: 50%;
     margin-left: 30px;
+    // padding-top: 20px;
     border: black solid 2px;
 }
 

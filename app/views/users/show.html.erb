@@ -1,26 +1,36 @@
-<h1>user</h1>
+<h1 class="page-title">user</h1>
 
 <!-- %= image_tag @user.image_name % -->
-<%= @user.name %>
-<br>
-<%= @user.nickname %>
+<div class="show-user-info">
+    <% if @user.image_name? %>
+        <div class="user-content-image">
+        <%= image_tag @user.image_name.thumb.url  %>
+        </div>
+    <% else %>
+        <div class="user-content-image">
+        <%= image_tag "/no-image.png", class:"user_image" %>
+        </div>
+    <% end %>
+    
+    <div class="show-user-info-right">
+        <% if @user.id == current_user.id %>
+            ユーザー氏名：<%= @user.name %>
+        <% end %>
+        <br>
+        ニックネーム：<%= @user.nickname %>
+
+        <br>
+        <td>フォロー数: <%= link_to @user.followings.count, user_followings_path(@user) %>
+        <td>フォロワー数: <%= link_to @user.followers.count, user_followers_path(@user) %></td>
+        <%= @user.comment %>
+    </div>
+</div>
 
 <% if @user.name == current_user.name %>
     <%= link_to "編集", edit_user_registration_path %>
 <% end %>
-<% if @user.image_name? %>
-    <div class="content-image">
-    <%= image_tag @user.image_name.thumb.url  %>
-    </div>
-<% else %>
-    <div class="content-image">
-    <%= image_tag "/no-image.png", class:"user_image" %>
-    </div>
-<% end %>
-<br>
-<td>フォロー数: <%= link_to @user.followings.count, user_followings_path(@user) %>
-<td>フォロワー数: <%= link_to @user.followers.count, user_followers_path(@user) %></td>
-<%= @user.comment %>
+
+
 
 
 <% if current_user.id != @user.id %>

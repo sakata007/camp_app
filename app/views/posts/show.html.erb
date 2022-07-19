@@ -17,13 +17,13 @@
       <%= @post.title %>
     </div>
 
-  <% if current_user %>
-    <% if @post.liked_by?(current_user) %>
-      <%= button_to "いいね解除", "/posts/#{@post.id}/likes", method: :delete %>
-    <% else %>
-      <%= button_to "いいね！", "/posts/#{@post.id}/likes" %>
-    <% end %> 
-  <% end %>
+    <% if current_user %>
+      <% if @post.liked_by?(current_user) %>
+        <%= button_to "いいね解除", "/posts/#{@post.id}/likes", method: :delete %>
+      <% else %>
+        <%= button_to "いいね！", "/posts/#{@post.id}/likes" %>
+      <% end %> 
+    <% end %>
 
     <p>いいね数：<%= link_to @post.likes.count, "/posts/#{@post.id}/likes" %></p>
     <div class="show-content">
@@ -33,13 +33,12 @@
       <%= link_to @post.user.name, user_path(@post.user) %>
     </div>
 
-  <% if current_user %>
-    <% if @post.user.name == current_user.name %>
-      <%= button_to "編集", edit_post_path, method: :get %>
-      <%= button_to "削除", post_path, method: :delete %>
+    <% if current_user %>
+      <% if @post.user.name == current_user.name %>
+        <%= button_to "編集", edit_post_path, method: :get %>
+        <%= button_to "削除", post_path, method: :delete %>
+      <% end %>
     <% end %>
-  <% end %>
-
   </div>
 </div>
   <%= link_to "投稿一覧に戻る", posts_path %>

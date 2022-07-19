@@ -25,14 +25,18 @@
     <div class="fullpage-container">
       <div class="side">
         <div class="side_contents">
-          <div class="current_user_content">
+          <div class="current_user">
+          <div class="current_user_image">
             <% if current_user %>
               <% if current_user.image_name %>
-                <%= image_tag current_user.image_name.thumb.url, :size => '20x20', style: "border-radius: 50%; border: black solid 1px;" %>
+                <%= image_tag current_user.image_name.thumb.url, :size => '50x50', style: "border-radius: 50%; border: black solid 1px; display: inline-block; " %>
               <% end %>
-              <%= link_to current_user.name, user_path(current_user) %>
-            <% end %>
           </div>
+          <div class="current_user_content">
+            <%= link_to current_user.name, user_path(current_user) %>
+          </div>
+          </div>
+            <% end %>
           <ul>
             <li>
               <%= link_to "投稿一覧", posts_path %>

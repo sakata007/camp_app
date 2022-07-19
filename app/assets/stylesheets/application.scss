@@ -48,17 +48,23 @@ header {
     color: silver;
 }
 
-.current_user_content {
-    float: left;
-    height: 70px;
+.current_user {
+    // float:left;
     background-color: aqua;
     width: 100%;
+}
+
+.current_user_content {
+    // float: left;
+    height: 70px;
+    
 }
 
 .current_user_content a {
     line-height: 70px;
     font-size: 40px;
     background-color: aquamarine;
+    margin-left: 60px;
 }
 
 .fullpage_container {
@@ -103,4 +109,15 @@ a {
 
 ul {
     list-style:none
+}
+
+.page-title {
+    display: inline-block;
+    // margin: 20px 20px 50px;
+    border: 1px black solid;
+    width: 100%;
+    // margin: 0 auto;
+    // text-align: center;
+    font-size: 100px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
