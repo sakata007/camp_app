@@ -1,0 +1,24 @@
+<h2>Results index</h2>
+
+<table class="table table-hover table-inverse">
+  <!--検索対象モデルがpostの時 -->
+  <% if @range == "Post" %>
+    <tbody>
+      <% @posts.each do |post| %>
+        <tr>
+          <td><%= post.title %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  <% else %>
+    <!--検索対象モデルがpostではない時(= 検索対象モデルがcampsiteの時) -->
+    <tbody>
+      <% @campsites.each do |campsite| %>
+        <tr>
+          <td><%= campsite.name %></td>
+          <td><%= campsite.introduction %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  <% end %>
+</table>

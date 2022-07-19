@@ -1,6 +1,8 @@
 <p style="color: green"><%= notice %></p>
 
+
 <!-- ここから_form.html.erbの内容 -->
+
 
 <%= form_with(model: @post) do |form| %>
   <% if @post.errors.any? %>
@@ -20,28 +22,42 @@
 <% end %>
 
 <!-- ここまで -->
+<div class="container">
 
-<p class="page-title">Posts</p>
+  <p class="page-title">Posts</p>
+
+<!-- 検索機能 -->
+
+  <div class="search-wrapper">
+    <%= form_with url: search_path, local: true, method: :get do |form| %>
+        <%= form.text_field :word %>
+        <%= form.select :range, options_for_select([[:post],[:campsite]]) %>
+        <%= form.select :search, options_for_select([["完全一致","perfect_match"], ["前方一致","forward_match"],  ["後方一致","backward_match"], ["部分一致","partial_match"]]) %>
+        <%= form.submit "検索", disable_with: 'searching...' %>
+    <% end %>
+  </div>
+
+  
+  <div class="post-new">
   <% if user_signed_in? %>
-    <div class="post-new">
-    <!-- %= form_with model: @post, local: true do |form| % -->
-      <%= form_with model: @post do |form| %>
-        <h1>新規投稿</h1>
-        <p>タイトル</p>
-          <%= form.text_field :title %>
-        <p>投稿内容</p>
-          <%= form.text_field :content %>        
-          <%= render "form", post: @post %>
-        <p>画像投稿</p>
-          <%= form.file_field :image_name %>
-        <p>キャンプ場名</p>
-          <%= form.text_field :campsite_id %>
-          <%= form.submit "投稿する" %>
-      <% end %>
-    </div>
+  <!-- %= form_with model: @post, local: true do |form| % -->
+    <%= form_with model: @post do |form| %>
+      <h1>新規投稿</h1>
+      <p>タイトル</p>
+        <%= form.text_field :title %>
+      <p>投稿内容</p>
+        <%= form.text_field :content %>        
+        <!-- %= render "form", post: @post % -->
+      <p>画像投稿</p>
+        <%= form.file_field :image_name %>
+      <p>キャンプ場名</p>
+        <%= form.text_field :campsite_id %>
+        <%= form.submit "投稿する" %>
+    <% end %>
   <% end %>
+  </div>
 
-  <div id="posts">
+  <div class="post-contents">
     <% @posts.each do |post| %>
       <div class="post-content">
         <% if post.image_name? %>
@@ -52,7 +68,8 @@
           <div class="content-image">
             <%= image_tag "/no-image.png", class:"post_image" %>
           </div>
-        <% end %>
+        <% end %> 
+
 
         <div class="content-title">
           <%= link_to post.title, post_path(post) %>
@@ -66,16 +83,19 @@
           <% end %> 
         <% end %>
 
-    <p>いいね数：<%= link_to post.likes.count, "/posts/#{post.id}/likes" %></p>
-    <div class="show-content">
-      <div>
-        <%= post.content %>
+        <p>いいね数：<%= link_to post.likes.count, "/posts/#{post.id}/likes" %></p>
+
+        <div class="show-content">
+          <div>
+            <%= post.content %>
+          </div>
+          <div>
+            <%= link_to post.user.name, user_path(post.user) %>
+          </div>
+        </div>
       </div>
-      <div>
-        <%= link_to post.user.name, user_path(post.user) %>
-      </div>
-    </div>
-  </div>
     <% end %>
+  </div>
+</div>
   
   

@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
   has_many :posts, dependent: :destroy
   has_many :likes, dependent: :destroy
+  has_many :campsite_likes, dependent: :destroy 
   
   # 一覧画面で使う
   has_many :followings, through: :relationships, source: :followed
@@ -29,4 +30,6 @@ class User < ApplicationRecord
   def following?(user)
     followings.include?(user)
   end
+
+  
 end

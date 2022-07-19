@@ -8,19 +8,31 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <!-- JavaScript導入 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css" -->
+    <script src="https://kit.fontawesome.com/fb8319747b.js" crossorigin="anonymous"></script>
   </head>
 
   <body>
     <header>
-      <%= link_to "campsite title", "/" %>
+      <div class="site-logo">
+        <i class="fa-solid fa-campground fa-2x"></i>
+        <%= link_to "campsite title", "/" %>
+      </div>
     </header>
 
     <div class="fullpage-container">
       <div class="side">
         <div class="side_contents">
-          <% if current_user %>
-            <%= link_to current_user.name, user_path(current_user) %>
-          <% end %>
+          <div class="current_user_content">
+            <% if current_user %>
+              <% if current_user.image_name %>
+                <%= image_tag current_user.image_name.thumb.url, :size => '20x20', style: "border-radius: 50%; border: black solid 1px;" %>
+              <% end %>
+              <%= link_to current_user.name, user_path(current_user) %>
+            <% end %>
+          </div>
           <ul>
             <li>
               <%= link_to "投稿一覧", posts_path %>
@@ -38,7 +50,7 @@
       </div>
 
       <div class="main">
-        <div class="container">
+        <div class="main-container">
           <%= yield %>
         </div>
       </div>

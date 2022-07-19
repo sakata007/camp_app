@@ -1,8 +1,11 @@
 <h1>campsite</h1>
 
 <!-- %= image_tag @campsite.image_name % -->
-
-<%= image_tag @campsite.image_name.thumb.url  %>
+<% if @campsite.image_name.present? %>
+  <%= image_tag @campsite.image_name.thumb.url  %>
+<% else %>
+  <%= image_tag "no-image.png" %>
+<% end %>
 <%= @campsite.name %>
 <%= @campsite.prefecture + @campsite.municipalitie + @campsite.address %>
 <%= @campsite.introduction %>

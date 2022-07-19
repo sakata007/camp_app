@@ -1,6 +1,13 @@
 
 <h1>Campsites</h1>
 
+<%= form_with url: search_path, local: true, method: :get do |form| %>
+    <%= form.text_field :word %>
+    <%= form.select :range, options_for_select([[:post],[:campsite]]) %>
+    <%= form.select :search, options_for_select([["完全一致","perfect_match"], ["前方一致","forward_match"],  ["後方一致","backward_match"], ["部分一致","partial_match"]]) %>
+    <%= form.submit "検索", disable_with: 'searching...' %>
+<% end %>
+
   <div id="posts">
     <% @campsites.each do |campsite| %>
       <div class="post-content">
@@ -27,11 +34,24 @@
           <%= campsite.prefecture + campsite.municipalitie + campsite.address %>
         </div>
         <div>
-          <%= image_tag campsite.image_name.thumb.url  %>
+          <% if campsite.image_name.present? %>
+            <%= image_tag campsite.image_name.thumb.url  %>
+          <% else %>
+            <%= image_tag "no-image.png", size: '200x200'%>
+          <% end %>
         </div>
         <div>
           <%= campsite.introduction %>
         </div>
+
+        <!--お気に入り機能-->
+        <% if current_user %>
+          <% if campsite.is_liked_by?(current_user) %>
+            <%= button_to "お気に入り解除", "/campsites/#{campsite.id}/campsite_likes", method: :delete %>
+          <% else %>
+            <%= button_to "お気に入り登録", "/campsites/#{campsite.id}/campsite_likes" %>
+          <% end %> 
+        <% end %>
         
       </div>
     <% end %>

@@ -15,17 +15,17 @@
 
     <div class="field">
       <%= f.label :性別 %><br />
-      <%= f.text_field :gender, autofocus: true, autocomplete: "nickname" %>
+      <%= f.select :gender, {"男性":1, "女性":2, "その他":3},local: true, autofocus: true, autocomplete: "nickname" %>
     </div>
 
     <div class="field">
       <%= f.label :アイコン画像 %><br />
-      <%= f.file_field :image_name, autofocus: true %>
+      <%= f.file_field :image_name, local: true, autofocus: true %>
     </div>
 
     <div class="field">
       <%= f.label :メールアドレス %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      <%= f.email_field :email, local: true,autofocus: true, autocomplete: "email" %>
     </div>
 
 

@@ -14,14 +14,55 @@
  *= require_self
  */
 
+// @import "font-awesome-sprockets";
+// @import "font-awesome";
+
+
 header {
     height: 50px;
-    background-color: rgba(191, 188, 188, 0.7);
-    z-index: 10;
+    background-color: darkslategray;
+    // z-index: 10;
+    border: black solid 2px;
+}
+
+
+
+.site-logo {
+    line-height: 50px;
+}
+
+.site-logo a {
+    font-size: 30px;
+    color: aliceblue;
+    // line-height: 30px;
+    margin-left: 10px;
+    width: 80%;
+}
+
+
+.site-logo {
+    padding-left: 30px;
+}
+
+.fa-2x {
+    color: silver;
+}
+
+.current_user_content {
+    float: left;
+    height: 70px;
+    background-color: aqua;
+    width: 100%;
+}
+
+.current_user_content a {
+    line-height: 70px;
+    font-size: 40px;
+    background-color: aquamarine;
 }
 
 .fullpage_container {
-    width: 1300px;
+    // width: 1300px;
 
 }
 
@@ -32,7 +73,7 @@ header {
 .side {
     width: 20%;
     float: left;
-    height:5000px;
+    // height:5000px;
     background-color: aliceblue;
     border : double 4px black; 
 }
@@ -42,6 +83,24 @@ header {
     height:5000px;
 }
 
+.main-container {
+    width: 78.5%;
+    float: right;
+    border: red solid 5px;
+}
+
 .container {
-    margin-left: 50px;
+    width: 90%;
+    margin: 0 auto;
+    background-color: rgba(177, 177, 25, 0.5);
+    border: blue solid 1px;
+    z-index: 2;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style:none
 }
