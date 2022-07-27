@@ -1,31 +1,96 @@
+<head>
+  <link rel="stylesheet" href="app/assets/stylesheets/campsite.scss">
+</head>
+<!--ここから更新ーーーーーーーーーーーーーーーーーーーー-->
 
-<h1>Campsites</h1>
+<div class="campsite-title-content big-bg">
+  <div class="wrapper">
+    <h2>CAMPSITES</h2>
+    <p>キャンプ場検索</p>
+  </div>
+</div><!--/.title-content-->
+
+<div class="main-contents wrapper">
+  <div class="tanomu">
+    <article>
+    
+      <div class="wrapper grid">
+        <% @campsites.each do |campsite| %>
+        <div class="item">
+          <% if campsite.image_name.present? %>
+              <%= image_tag campsite.image_name.thumb.url, class: "item-image" %>
+          <% else %>
+              <%= image_tag "/no-image.png", class:"item-image" %>
+          <% end %> 
+          <%= link_to campsite.name, campsite_path(campsite), class: "item-title"%>
+        </div>
+        
+        
+        
+        <% end %>
+        
+    </div><!-- /.grid -->
+    </article>
+
+    <aside>
+      <h3 class="sub-title">POSTS</h3>
+      <ul class="sub-menu">
+          <li><a href="#">投稿記事一覧</a></li>
+          <li><a href="#">人気の投稿</a></li>
+          <li><a href="#">お気に入りの投稿</a></li>
+      </ul>
+
+      <h3 class="sub-title">CAMPSITES</h3>
+      <ul class="sub-menu">
+          <li><a href="#">キャンプ場一覧</a></li>
+          <li><a href="#">人気のキャンプ場</a></li>
+          <li><a href="#">お気に入りのキャンプ場</a></li>
+      </ul>
+    </aside>
+  </div>
+</div><!--/.main-contents-->
+
+
+<%
+=begin%>
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--h1>Campsites</!--h1>
 
 <%= form_with url: search_path, local: true, method: :get do |form| %>
     <%= form.text_field :word %>
-    <%= form.select :range, options_for_select([[:post],[:campsite]]) %>
+    <%= form.select :range, options_for_select([[:campsite],[:campsite]]) %>
     <%= form.select :search, options_for_select([["完全一致","perfect_match"], ["前方一致","forward_match"],  ["後方一致","backward_match"], ["部分一致","partial_match"]]) %>
     <%= form.submit "検索", disable_with: 'searching...' %>
 <% end %>
 
-  <div id="posts">
+  <div id="campsites">
     <% @campsites.each do |campsite| %>
-      <div class="post-content">
-<%
-=begin
-%>
+      <div class="campsite-content"> 
+
         <% if campsite.image_name %>
           <div class="content-image">
             <%= image_tag campsite.image_name.thumb.url  %>
           </div>
         <% else %>
           <div class="content-image">
-            <%= image_tag "/no-image.png", class:"post_image" %>
+            <%= image_tag "/no-image.png", class:"campsite_image" %>
           </div>
         <% end %> 
-<%
-=end
-%>
 
         <div class="content-title">
           <%= link_to campsite.name, campsite_path(campsite) %>
@@ -42,9 +107,9 @@
         </div>
         <div>
           <%= campsite.introduction %>
-        </div>
+        </div -->
 
-        <!--お気に入り機能-->
+        <!--お気に入り機能>
         <% if current_user %>
           <% if campsite.is_liked_by?(current_user) %>
             <%= button_to "お気に入り解除", "/campsites/#{campsite.id}/campsite_likes", method: :delete %>
@@ -65,9 +130,11 @@
   <div id="campsites">
   <% @campsites.each do |campsite| %>
     <%= render campsite %>
-    <p>
+    <p -->
       <!-- %= link_to "Show this campsite", campsite % -->
-    </p>
+    <!--/p>
   <% end %>
-</div>
-  
+</div --> 
+<%
+=end%>
+

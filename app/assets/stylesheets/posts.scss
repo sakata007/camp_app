@@ -1,98 +1,221 @@
 
 
-.post-new {
-    height: 500px;
+.title-content {
+    background-image: image-url('campfire-896196_1280.jpg');
+    height: 40vh;
     width: 100%;
-    margin-bottom: 30px;
-    padding: 30px;
-    background-color: rgb(66, 138, 138);
-    border-radius: 30px;
-    box-sizing: border-box;
+    margin-bottom: 50px;
 }
-
-.post-new h1 {
-    color: aliceblue;
-
+.title-content h2 {
+    text-align: center;
+    color: whitesmoke;
+    font-size: 3rem;
+    padding-top: 15vh;
 }
-
-.post-new p {
-    font-size: 20px;
-    color: aliceblue;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
-
-
-.search-wrapper {
-    width: 100%;
-    height: 100px;
-    border: pink solid 1px;
-}
-
-.post-contents {
-    border: blueviolet, solid, 2px;
-    background-color: rgba(123, 198, 198, 0.5);
-    height: 1000px;
-    // width: 200px;
-    z-index: 2;
-}
-
-.post-content {
-    height: 500px;
-    box-sizing: border-box;
-    width: 30%;
-    margin-right: 3%;
-    background-color: rgb(166, 217, 91);
-    float: left;
-    border-radius: 30px;
-    padding: 20px;
-}
-
-.content-title {
-    font-size: 35px;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    padding: 10px 0;
-}
-
-.content-image {
+.title-content p {
+    color: whitesmoke;
     text-align: center;
 }
 
-.post_image {
-    height: 200px;
-    width: 200px;
-    margin-top: 20px;
+.tanomu {
+    display: flex;
+    justify-content: space-between;
 }
 
-// show
-
-.show-post-content {
-    height: 500px;
-    width: 93%;
-    margin: 0 20px 50px 20px;
-    background-color: rgb(166, 217, 91);
-    float: left;
-    border-radius: 30px;
-    padding: 20px;
+// メインコンテンツーーーーーーーーーーー
+#main-contents {
+    padding-bottom: 10vh;
 }
 
-.show-post-image {
-    display: inline-block;
-    height: 400px;
-    width: 400px;
-    margin-top: 20px;
-    float: left;
+// ボタン
+.button {
+    font-size: 1.375rem;
+    background-color: #432;
+    opacity: 0.8;
+    color: #fff;
+    border-radius: 5px;
+    padding: 10px 32px;
+    margin-right: 10px;
 }
 
-.show-infomation {
-    float: right;
-    width: 50%;
-    margin-left: 30px;
-    // padding-top: 20px;
-    border: black solid 2px;
+.button:hover {
+    background: #432;
+    opacity: 1;
 }
 
-.show-content-title {
-    font-size: 60px;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    padding: 10px 50px 10px 0;
+// 投稿記事
+article {
+    width: 74%;
+    order: 1;
 }
+
+// サイドバー
+aside {
+    width: 24%;
+    order: 2;
+    
+}
+.sub-title {
+    font-size: 1.375rem;
+    padding: 0 8px 8px;
+    border-bottom: 2px rgb(0, 56, 0) solid;
+    font-weight:  normal;
+}
+
+aside p {
+    padding: 12px 10px;
+}
+
+.sub-menu {
+    margin-bottom: 60px;
+    list-style: none;
+}
+
+.sub-menu li {
+    border-bottom: 1px rgba(0, 56, 0,.5) solid;
+}
+
+.sub-menu a {
+    color: #432;
+    padding: 10px;
+    display: block;
+}
+
+.sub-menu a:hover {
+    color: #0bd;
+}
+
+// 投稿
+.menu-content {
+    max-width: 560px;
+    margin-top: 10%;
+}
+.menu-content .page-title {
+    text-align: center;
+}
+.menu-content p {
+    font-size: 1.125rem;
+    margin: 10px 0 0;
+}
+.grid {
+    display: grid;
+    gap: 26px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    margin-top: 6%;
+    margin-bottom: 50px;
+    // display: flex;
+    // flex-flow: column;
+
+}
+
+.item-image {
+    height: 30vh;
+    width: 100%;
+    box-shadow: 0 10px 10px 0 rgba(0, 0, 0, .1);;
+}
+
+.item-title {
+    color: #432;
+    font-size: 1.35rem;
+}
+
+
+
+// -------------------------------------------------
+
+// .post-new {
+//     height: 500px;
+//     width: 100%;
+//     margin-bottom: 30px;
+//     padding: 30px;
+//     background-color: rgb(66, 138, 138);
+//     border-radius: 30px;
+//     box-sizing: border-box;
+// }
+
+// .post-new h1 {
+//     color: aliceblue;
+
+// }
+
+// .post-new p {
+//     font-size: 20px;
+//     color: aliceblue;
+//     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+// }
+
+
+// .search-wrapper {
+//     width: 100%;
+//     height: 100px;
+//     border: pink solid 1px;
+// }
+
+// .post-contents {
+//     border: blueviolet, solid, 2px;
+//     background-color: rgba(123, 198, 198, 0.5);
+//     height: 1000px;
+//     // width: 200px;
+//     z-index: 2;
+// }
+
+// .post-content {
+//     height: 500px;
+//     box-sizing: border-box;
+//     width: 30%;
+//     margin-right: 3%;
+//     background-color: rgb(166, 217, 91);
+//     float: left;
+//     border-radius: 30px;
+//     padding: 20px;
+// }
+
+// .content-title {
+//     font-size: 35px;
+//     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+//     padding: 10px 0;
+// }
+
+// .content-image {
+//     text-align: center;
+// }
+
+// .post_image {
+//     height: 200px;
+//     width: 200px;
+//     margin-top: 20px;
+// }
+
+// // show
+
+// .show-post-content {
+//     height: 500px;
+//     width: 93%;
+//     margin: 0 20px 50px 20px;
+//     background-color: rgb(166, 217, 91);
+//     float: left;
+//     border-radius: 30px;
+//     padding: 20px;
+// }
+
+// .show-post-image {
+//     display: inline-block;
+//     height: 400px;
+//     width: 400px;
+//     margin-top: 20px;
+//     float: left;
+// }
+
+// .show-infomation {
+//     float: right;
+//     width: 50%;
+//     margin-left: 30px;
+//     // padding-top: 20px;
+//     border: black solid 2px;
+// }
+
+// .show-content-title {
+//     font-size: 60px;
+//     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+//     padding: 10px 50px 10px 0;
+// }

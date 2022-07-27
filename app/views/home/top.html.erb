@@ -1,6 +1,6 @@
+    
 
-
-<div class="top-wrapper">
+<!--div class="top-wrapper">
     <div class="container">
         <div class="top-content">
         <h1>GO CAMPING!!</h1>
@@ -28,5 +28,19 @@
 
 <footer>
     <h1>campsite_title</h1>
-</footer>
+</footer -->
 
+
+<div id="home" class="big-bg">
+    <div class="home-top wrapper">
+        <h2 class="page-title">Go <span>Camp</span>ing!!!</h2>
+        <p>キャンプ場検索＆キャンプツイート投稿サイト</p>
+
+        <% if user_signed_in? %>
+            <p></p>
+        <% else %>
+            <%= link_to "新規登録", new_user_registration_path, {class: "button"} %>
+            <%= link_to "ログイン", new_user_session_path, {class: "button"} %>
+        <% end %>
+    </div><!--/.home-top-->
+</div><!--/.home-->

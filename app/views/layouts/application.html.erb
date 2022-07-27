@@ -15,6 +15,39 @@
   </head>
 
   <body>
+  <div class="title-header">
+      <div class="page-header wrapper">
+            <!--i class="fa-solid fa-campground fa-2x"></!--i-->
+        <h2><%= link_to "campsite title", "/" %></h2>
+        <nav>
+            <ul class="main-nav">
+                <li><%= link_to "Posts", posts_path %></li>
+                <li><%= link_to "Campsites", campsites_path %></li>
+                <% if current_user %>
+                  <li><%= link_to "My Page", user_path(current_user)%></li>
+                <% end %>
+            </ul>
+        </nav>
+      </div>
+    </div><!--page-header-->
+  </div>
+
+    <div class="main-content">
+        <%= yield %>
+    </div><!--./main-contents-->
+
+    <footer>
+        <div class="wrapper">
+            <p><small>&copy; 2022 sakata</small></p>
+        </div>
+    </footer>
+  </body>
+</html>
+
+
+
+<!-- 下ココから上が新レイアウトーーーーーーーーーーーーー 
+  <body>
     <header>
       <div class="site-logo">
         <i class="fa-solid fa-campground fa-2x"></i>
@@ -26,15 +59,15 @@
       <div class="side">
         <div class="side_contents">
           <div class="current_user">
-          <div class="current_user_image">
-            <% if current_user %>
-              <% if current_user.image_name %>
-                <%= image_tag current_user.image_name.thumb.url, :size => '50x50', style: "border-radius: 50%; border: black solid 1px; display: inline-block; " %>
-              <% end %>
-          </div>
-          <div class="current_user_content">
-            <%= link_to current_user.name, user_path(current_user) %>
-          </div>
+            <div class="current_user_image">
+              <% if current_user %>
+                <% if current_user.image_name %>
+                  <%= image_tag current_user.image_name.thumb.url, :size => '50x50', style: "border-radius: 50%; border: black solid 1px; display: inline-block; " %>
+                <% end %>
+            </div>
+            <div class="current_user_content">
+              <%= link_to current_user.name, user_path(current_user) %>
+            </div>
           </div>
             <% end %>
           <ul>
@@ -55,9 +88,9 @@
 
       <div class="main">
         <div class="main-container">
-          <%= yield %>
+
         </div>
       </div>
     </div>
   </body>
-</html>
+</html -->

@@ -1,25 +1,67 @@
-.top-wrapper {
-    background-image: image-url('campfire-896196_1280.jpg');
-    height: 600px;
-    background-size: cover;
+// .top-wrapper {
+//     background-image: image-url('campfire-896196_1280.jpg');
+//     height: 600px;
+//     background-size: cover;
+// }
+
+
+
+// .top-content {
+//     text-align: center;
+//     padding-top: 150px;
+// }
+
+// .top-content h1 {
+//     color: aliceblue;
+//     font-size: 70px;
+//     line-height: 70px;
+//     background-color: rgba(189, 189, 150, 0.7);
+// }
+
+// .top-content h3 {
+//     color: aliceblue;
+//     background-color: rgba(189, 189, 150, 0.7);
+
+// }
+
+#home {
+    background-image: image-url('atusataisakuisu_TP_V.jpg');
 }
 
-
-
-.top-content {
+.home-top {
     text-align: center;
-    padding-top: 150px;
+    height: 80vh;
+}
+.home-top h2 {
+    padding-top: 20%;
+    color: whitesmoke;
+    font-size: 5rem;
+}
+.home-top p {
+    color: whitesmoke;
+    font-size: 1.25rem;
+    margin-bottom: 50px;
+}
+// ボタン
+.button {
+    font-size: 1.375rem;
+    background-color: rgb(0, 56, 0);;
+    opacity: 0.7;
+    color: #fff;
+    border-radius: 5px;
+    padding: 18px 32px;
+    margin-left: 10px;
 }
 
-.top-content h1 {
-    color: aliceblue;
-    font-size: 70px;
-    line-height: 70px;
-    background-color: rgba(189, 189, 150, 0.7);
+.button:hover {
+    background: rgb(0, 56, 0);;
+    opacity: 1;
 }
 
-.top-content h3 {
-    color: aliceblue;
-    background-color: rgba(189, 189, 150, 0.7);
-
+.login {
+    margin-left: 100px;
 }
+// span{
+//     color: red;
+// }
+
