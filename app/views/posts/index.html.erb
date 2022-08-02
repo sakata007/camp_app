@@ -63,6 +63,21 @@
             <% end %>
           <% end %> 
           <%= link_to post.title, post_path(post), class: "item-title"%>
+
+          <div class="likes-button" style="float: right; margin-top: 10px;">
+            <% if current_user %>
+              <% if post.liked_by?(current_user) %>
+                <%= button_to "/posts/#{post.id}/likes", method: :delete do %>
+                  <i class="fa-solid fa-heart fa-2x"></i>
+                <% end %>
+              <% else %>
+                <%= button_to "/posts/#{post.id}/likes" do %>
+                  <i class="fa-regular fa-heart size fa-2x"></i>
+                <% end %>
+              <% end %> 
+            <% end %>
+            <p class="likes-count" style="font-size: 1rem;"><%= link_to post.likes.count, "/posts/#{post.id}/likes" %></p>
+          </div><!--/.likes-button-->
         </div>
         <% end %>
       </div><!-- /.grid -->

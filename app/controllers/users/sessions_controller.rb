@@ -1,7 +1,7 @@
-# # frozen_string_literal: true
+frozen_string_literal: true
 
-# class Users::SessionsController < Devise::SessionsController
-#   before_action configure_permitted_parameters, only: [:create]
+class Users::SessionsController < Devise::SessionsController
+  before_action configure_permitted_parameters, only: [:create]
 
 #   GET /resource/sign_in
 #   def new
@@ -15,9 +15,9 @@
 #   end
 
 #   DELETE /resource/sign_out
-#   def destroy
-#     super
-#   end
+  def destroy
+    super
+  end
 
 #   protected
 
@@ -33,4 +33,4 @@
   #   # deviseのUserモデルにパラメーターを許可
   #   devise_parameter_sanitizer.permit(:sign_up, keys: [:email])
   # end
-# end
+end
