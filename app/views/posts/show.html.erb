@@ -1,6 +1,8 @@
 <p style="color: green"><%= notice %></p>
+<div id="post-show-page" class="wrapper">
 
-<div class="show-post-content">
+<article>
+<div class="show-post-content wrapper-in-article">
   <% if @post.image_name? %>
     <div class="show-content-image">
       <%= image_tag @post.image_name.url, class:"show-post-image"  %>
@@ -9,50 +11,68 @@
     <div class="show-content-image">
       <%= image_tag "/no-image.png", class:"show-post-image" %>
     </div>
-    
   <% end %>
 
-  <div class="show-infomation">
-    <div class="show-content-title">
-      <%= @post.title %>
+  <div class="post-infomation">
+    <div  class="show-item-title">
+      <h2><%= @post.title %></h2>
+      <p><%= time_ago_in_words(@post.created_at) %>前</p>
     </div>
+    
 
-    <% if current_user %>
-      <% if @post.liked_by?(current_user) %>
-        <%= button_to "いいね解除", "/posts/#{@post.id}/likes", method: :delete %>
-      <% else %>
-        <%= button_to "いいね！", "/posts/#{@post.id}/likes" %>
-      <% end %> 
-    <% end %>
-
-    <p>いいね数：<%= link_to @post.likes.count, "/posts/#{@post.id}/likes" %></p>
+    <div class="likes-button">
+      <% if current_user %>
+        <% if @post.liked_by?(current_user) %>
+          <%= button_to "/posts/#{@post.id}/likes", method: :delete do %>
+            <i class="fa-solid fa-heart size"></i>
+          <% end %>
+        <% else %>
+          <%= button_to "/posts/#{@post.id}/likes" do %>
+            <i class="fa-regular fa-heart size"></i>
+          <% end %>
+        <% end %> 
+      <% end %>
+      <p class="likes-count"><%= link_to @post.likes.count, "/posts/#{@post.id}/likes" %></p>
+    </div><!--/.likes-button-->
+  </div><!--/.post-infomation-->
     <div class="show-content">
-      <%= @post.content %>
+      <p class="post-content"><%= @post.content %></p>
     </div>
     <div class="show-user-name">
-      <%= link_to @post.user.name, user_path(@post.user) %>
+      
     </div>
 
     <% if current_user %>
       <% if @post.user.name == current_user.name %>
-        <%= button_to "編集", edit_post_path, method: :get %>
-        <%= button_to "削除", post_path, method: :delete %>
+        <div class="current_user_only_button">
+          <%= button_to "投稿を編集する", edit_post_path, method: :get, class: "button" %>
+          <%= button_to "投稿を削除する", post_path, method: :delete, class: "destroy-button" %>
+        </div>
       <% end %>
     <% end %>
-  </div>
+  
 </div>
-  <%= link_to "投稿一覧に戻る", posts_path %>
-<!-- %= render @post %>
 
-<div>
-  <%= link_to "Edit this post", edit_post_path(@post) %> |
-  <%= button_to "Destroy this post", @post, method: :delete %>
-</div -->
 
+<!--ユーザーの他の投稿ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー-->
   <% if current_user %>
     <% if @post.user.id != current_user.id %>
-    <h1>このユーザーの他の投稿</h1>
-    <% @this_user_posts.each do |post| %>
+    <h1 class="other-user-post-title">このユーザーの他の投稿</h1>
+    <div class="grid wrapper-in-article">
+        <% @this_user_posts.each.each do |post| %>
+        <div class="item">
+          <% if post.image_name? %>
+              <%= image_tag post.image_name.thumb.url, class: "item-image" %>
+          <% else %>
+              <%= image_tag "/no-image.png", class:"item-image" %>
+          <% end %> 
+          <%= link_to post.title, post_path(post), class: "item-title"%>
+        </div>
+        <% end %>
+      </div><!-- /.grid -->
+    <%
+=begin%>
+ <% @this_user_posts.each do |post| %>
       <% if @post.id != post.id %>
         <div class="post-content">
           <% if post.image_name? %>
@@ -72,12 +92,49 @@
           <div>
             <%= post.content %>
           </div>
-          <div>
-            <%= post.user.name %>
-          </div>
         </div>
         <% end %>
-    <% end %>
+    <% end %> 
+<%
+=end%>
   <% end %>
 <% end %> 
+</article>
+
+<!--投稿したユーザーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー-->
+<aside class="user-aside">
+  <h2>投稿したユーザー</h2>
+  <% if @user.image_name? %>
+      <div class="user-content-image">
+      <%= image_tag @user.image_name.thumb.url, class: "user-image"  %>
+      </div>
+  <% else %>
+      <div class="user-content-image">
+      <%= image_tag "/no-image.png", class:"user_image" %>
+      </div>
+  <% end %>
+
+  <div class="user-info">
+  <% if @user.id == current_user.id %>
+      <p>ユーザー氏名：<%= link_to @post.user.name, user_path(@post.user) %></p>
+  <% end %>
+  <br>
+      <p>ニックネーム：<%= link_to @post.user.nickname, user_path(@post.user) %></p>
+      <p>自己紹介
+      <br><%= @user.comment %></p>
+      <p>フォロー数　　　:　<%= link_to @user.followings.count, user_followings_path(@user) %></p>
+      <p><td>フォロワー数　　:　<%= link_to @user.followers.count, user_followers_path(@user) %></p>
+
+      <% if @user.name == current_user.name %>
+          <div class="user-button"><%= link_to "ユーザー情報編集", edit_user_registration_path, class: "user-info-button" %></div>
+      <% elsif current_user.following?(@user) %>
+          <div class="user-button"><%= button_to "フォロー解除", user_relationships_path(@user.id), method: :delete, class: "user-info-button" %></div>
+      <% else %>
+          <div class="user-button"><%= button_to "フォローする", user_relationships_path(@user.id), class: "user-info-button" %></div>
+      <% end %>
+  </div><!--/.user-info-->
+</aside>
+
+</div>
+<%= link_to "投稿一覧に戻る", posts_path %>
 

@@ -32,13 +32,14 @@
     text-align: center;
     height: 80vh;
 }
-.home-top h2 {
+.page-title {
     padding-top: 20%;
-    color: whitesmoke;
+    color: rgb(30, 78, 17);
     font-size: 5rem;
+    // box-shadow: 0 10px 10px 0 rgba(0, 0, 0, .1);
 }
 .home-top p {
-    color: whitesmoke;
+    color: rgb(30, 78, 17);
     font-size: 1.25rem;
     margin-bottom: 50px;
 }

@@ -18,7 +18,9 @@
   <div class="title-header">
       <div class="page-header wrapper">
             <!--i class="fa-solid fa-campground fa-2x"></!--i-->
-        <h2><%= link_to "campsite title", "/" %></h2>
+        <%= link_to "/" do %>
+          <h2 class="site-title-logo"><i class="fa-solid fa-campground"></i>campsite title</h2>
+        <% end %>
         <nav>
             <ul class="main-nav">
                 <li><%= link_to "Posts", posts_path %></li>

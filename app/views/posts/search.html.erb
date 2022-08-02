@@ -1,0 +1,56 @@
+<div id="search-contents" class="wrapper">
+  <div class="tanomu">
+    <article>
+
+    <!--検索機能 -->
+
+    <h2 class="wrapper-title"><%= "『#{params[:keyword]}』の検索結果"%></h2>
+    
+    <%= form_with url: search_posts_path, local: true, method: :get do |form| %>
+      <div class="search-wrapper wrapper">
+        <div><%= form.text_field :keyword, placeholder: "投稿を検索する", class: "search-box"%></div>
+        <!-- %= form.select :range, options_for_select([[:投稿を検索],[:キャンプ場を検索]]) % -->
+        <!--%= form.select :search, options_for_select([["完全一致","perfect_match"], ["前方一致","forward_match"],  ["後方一致","backward_match"], ["部分一致","partial_match"]]) % -->
+        <div><%= form.submit "検索", disable_with: 'searching...', class: "search-submit"%></div>
+      </div>
+    <% end %>
+
+    
+
+    
+
+      <div class="wrapper grid">
+        <% @posts.each do |post| %>
+        <div class="item">
+          <% if post.image_name? %>
+            <%= link_to post_path(post) do %>
+              <%=  image_tag post.image_name.thumb.url, class: "item-image" %>
+            <% end %>
+          <% else %>
+            <%= link_to post_path(post) do %>
+              <%= image_tag "/no-image.png", class:"item-image" %>
+            <% end %>
+          <% end %> 
+          <%= link_to post.title, post_path(post), class: "item-title"%>
+        </div>
+        <% end %>
+      </div><!-- /.grid -->
+    </article>
+
+    <aside>
+      <h3 class="sub-title">POSTS</h3>
+      <ul class="sub-menu">
+          <li><a href="#">投稿記事一覧</a></li>
+          <li><a href="#">人気の投稿</a></li>
+          <li><a href="#">お気に入りの投稿</a></li>
+      </ul>
+
+      <h3 class="sub-title">CAMPSITES</h3>
+      <ul class="sub-menu">
+          <li><a href="#">キャンプ場一覧</a></li>
+          <li><a href="#">人気のキャンプ場</a></li>
+          <li><a href="#">お気に入りのキャンプ場</a></li>
+      </ul>
+    </aside>
+  </div><!-- /.tanomu-->
+</div><!--/.main-contents-->

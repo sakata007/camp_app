@@ -4,7 +4,13 @@ Rails.application.routes.draw do
   get 'relationships/followings'
   get 'relationships/followers'
   resources :campsites
-  resources :posts
+  resources :posts do
+    collection do
+      get "search"
+      # => "searches#search"
+      # get "search/result" => "search#result"
+    end
+  end
   get "/" => "home#top"
   devise_for :users, :controllers => {
     :registrations => 'users/registrations'
@@ -23,8 +29,8 @@ Rails.application.routes.draw do
     get 'followings' => 'relationships#followings', as: 'followings'
     get 'followers' => 'relationships#followers', as: 'followers'
   end
-  get "search" => "searches#search"
-  get "search/result" => "search#result"
+  # get "search" => "searches#search"
+  # get "search/result" => "search#result"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")

@@ -16,19 +16,28 @@ class Post < ApplicationRecord
     # end
 
     # 検索機能
-    def self.looks(search, word)
-        if search == "perfect_match"
-            @post = Post.where("title LIKE?", "#{word}")
-        elsif search == "forward_match"
-            @post = Post.where("title LIKE?","#{word}%")
-        elsif search == "backward_match"
-            @post = Post.where("title LIKE?","%#{word}")
-        elsif search == "partial_match"
-            @post = Post.where("title LIKE?","%#{word}%")
+
+    def self.search(search)
+        if search
+          where(["title LIKE? OR content LIKE?", "%#{search}%", "%#{search}%"])
         else
-            @post = Post.all
+          Post.all
         end
-    end
+      end
+
+    # def self.looks(search, word)
+    #     if search == "perfect_match"
+    #         @post = Post.where("title LIKE?", "#{word}")
+    #     elsif search == "forward_match"
+    #         @post = Post.where("title LIKE?","#{word}%")
+    #     elsif search == "backward_match"
+    #         @post = Post.where("title LIKE?","%#{word}")
+    #     elsif search == "partial_match"
+    #         @post = Post.where("title LIKE?","%#{word}%")
+    #     else
+    #         @post = Post.all
+    #     end
+    # end
 
 
 end

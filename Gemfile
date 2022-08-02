@@ -84,3 +84,5 @@ gem "refile-mini_magick"
 
 gem 'font-awesome-rails'
 gem 'font-awesome-sass'
+
+gem 'rails-i18n'

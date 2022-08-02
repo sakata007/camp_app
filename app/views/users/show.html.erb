@@ -1,6 +1,71 @@
+
+
+<%
+=begin%>
+ <div class="title-content big-bg">
+</div> 
+<%
+=end%>
+<div id="user-show-page" class="wrapper">
+    <aside class="user-aside">
+        <% if @user.image_name? %>
+            <div class="user-content-image">
+            <%= image_tag @user.image_name.thumb.url, class: "user-image"  %>
+            </div>
+        <% else %>
+            <div class="user-content-image">
+            <%= image_tag "/no-image.png", class:"user_image" %>
+            </div>
+        <% end %>
+
+        <div class="user-info">
+        <% if @user.id == current_user.id %>
+            <p>ユーザー氏名：<%= @user.name %></p>
+        <% end %>
+        <br>
+            <p>ニックネーム：<%= @user.nickname %></p>
+            <p>自己紹介
+            <br><%= @user.comment %></p>
+            <p>フォロー数　　　:　<%= link_to @user.followings.count, user_followings_path(@user) %></p>
+            <p><td>フォロワー数　　:　<%= link_to @user.followers.count, user_followers_path(@user) %></p>
+
+            <% if @user.name == current_user.name %>
+                <div class="user-button"><%= link_to "ユーザー情報編集", edit_user_registration_path, class: "user-info-button" %></div>
+            <% elsif current_user.following?(@user) %>
+                <div class="user-button"><%= button_to "フォロー解除", user_relationships_path(@user.id), method: :delete, class: "user-info-button" %></div>
+            <% else %>
+                <div class="user-button"><%= button_to "フォローする", user_relationships_path(@user.id), class: "user-info-button" %></div>
+            <% end %>
+        </div><!--/.user-info-->
+    </aside>
+
+    <article>
+        <div class="wrapper">
+            <% if @user == current_user %>
+                <h1 class="wrapper-title">自分の投稿</h1>
+            <% else %>
+                <h1 class="wrapper-title">このユーザーの投稿</h1>
+            <% end %>
+        </div>
+
+        <div class="wrapper grid">
+        <% @posts.each do |post| %>
+        <div class="item">
+          <% if post.image_name? %>
+              <%= image_tag post.image_name.thumb.url, class: "item-image" %>
+          <% else %>
+              <%= image_tag "/no-image.png", class:"item-image" %>
+          <% end %> 
+          <%= link_to post.title, post_path(post), class: "item-title"%>
+        </div>
+        <% end %>
+      </div><!-- /.grid -->
+    </article>
+</div>
+<!--
 <h1 class="page-title">user</h1>
 
-<!-- %= image_tag @user.image_name % -->
+
 <div class="show-user-info">
     <% if @user.image_name? %>
         <div class="user-content-image">
@@ -71,5 +136,6 @@
     </div>
     </div>
 <% end %>
+-->
 
 

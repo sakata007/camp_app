@@ -25,7 +25,7 @@
 }
 html {
     font-size: 100%;
-    // background-color: rgb(232, 212, 187);
+    background-color: rgba(128, 128, 128,.15)
 }
 body {
     font-family: "Yu Gothic Medium", "游ゴシック Medium", YuGothic, "游ゴシック体", "ヒラギノ角ゴ Pro W3", sans-serif;
@@ -60,27 +60,30 @@ li {
     // position: fixed;
     // top: 0px;
 }
-.page-header a {
-    font-size: 1.25rem;
-    margin: 10px 15px 0;
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    // font-weight: normal;
+}
+.site-title-logo {
+    // font-size: 1.25rem;
+    // margin: 10px 15px 0;
     color: whitesmoke;
+    font-weight: normal;
 }
 .main-nav {
     display: flex;
     font-size: 1.25rem;
     text-transform: uppercase;
-    margin: 10px 15px 0;
+    // margin: 10px 15px 0;
     list-style: none;
-}
-.page-header {
-    display: flex;
-    justify-content: space-between;
 }
 .main-nav a {
     color: whitesmoke;
 }
 .main-nav a:hover {
-    color: gray
+    color: green
 }
 .main-nav li {
     margin-left: 36px;

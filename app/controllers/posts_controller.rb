@@ -11,6 +11,7 @@ class PostsController < ApplicationController
   def show
     @post = Post.find_by(id:params[:id])
     @this_user_posts = Post.where(user_id: @post.user.id)
+    @user = @post.user
   end
 
   # GET /posts/new
@@ -60,6 +61,14 @@ class PostsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def search
+    @posts = Post.search(params[:keyword])
+  end
+
+  # def result
+  #   @posts = Post.search(params[:keyword])
+  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.

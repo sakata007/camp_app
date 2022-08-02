@@ -26,19 +26,41 @@
   <div class="wrapper">
     <h2>POSTS</h2>
     <p><%= link_to "新規投稿", new_post_path, class: "button"%></p>
-  </div>
+
+
+  </div><!-- /.wrapper -->
 </div><!--/.title-content-->
 
 <div id="main-contents" class="wrapper">
   <div class="tanomu">
     <article>
+
+    <!--検索機能 -->
+
+    
+      <%= form_with url: search_posts_path, local: true, method: :get do |form| %>
+        <div class="search-wrapper wrapper">
+          <div><%= form.text_field :keyword, placeholder: "投稿を検索する", class: "search-box"%></div>
+          <!-- %= form.select :range, options_for_select([[:投稿を検索],[:キャンプ場を検索]]) % -->
+          <!--%= form.select :search, options_for_select([["完全一致","perfect_match"], ["前方一致","forward_match"],  ["後方一致","backward_match"], ["部分一致","partial_match"]]) % -->
+          <div><%= form.submit "検索", disable_with: 'searching...', class: "search-submit"%></div>
+        </div>
+      <% end %>
+
+
+
+
       <div class="wrapper grid">
         <% @posts.each do |post| %>
         <div class="item">
           <% if post.image_name? %>
-              <%= image_tag post.image_name.thumb.url, class: "item-image" %>
+            <%= link_to post_path(post) do %>
+              <%=  image_tag post.image_name.thumb.url, class: "item-image" %>
+            <% end %>
           <% else %>
+            <%= link_to post_path(post) do %>
               <%= image_tag "/no-image.png", class:"item-image" %>
+            <% end %>
           <% end %> 
           <%= link_to post.title, post_path(post), class: "item-title"%>
         </div>

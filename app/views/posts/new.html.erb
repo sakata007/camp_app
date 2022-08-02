@@ -1,21 +1,35 @@
-<h1>新規投稿</h1>
+<div class="wrapper" id="new-post-page">
+  <div class="post-new-body">
+    <h1>新規投稿</h1>
 
 
 
-<br>
-
-<%= form_with model: @post, local: true do |form| %>
-  <p>タイトル</p>
-  <%= form.text_field :title %>
-  <p>投稿内容</p>
-  <%= form.text_field :content %>
-  <%= form.submit "投稿する" %>
-  <%= render "form", post: @post %>
-  <p>画像投稿</p>
-  <%= form.file_field :image %>
-  <p>キャンプ場名</p>
-  <%= form.text_field :campsite_id %>
-<% end %>
+    <br>
+    <div class="new-post">
+    <%= form_with model: @post, local: true do |form| %>
+      <div class="post-item">
+        <p>タイトル</p>
+        <%= form.text_field :title, class: "title-text text-field" %>
+      </div>
+      <div class="post-item">
+        <p>投稿内容</p>
+        <%= form.text_field :content, class: "content-text text-field" %>
+        <%= render "form", post: @post %>
+      </div>
+      <div class="post-item">
+        <p>画像投稿</p>
+        <%= form.file_field :image, class: "image-file-field" %>
+      </div>
+      <div class="post-item">
+        <p>キャンプ場名</p>
+        <%= form.text_field :campsite_id, class: "campsite-text text-field" %>
+      </div>
+      <br>
+      <%= form.submit "投稿する", class: "submit button" %>
+    <% end %>
+    </div><!--/.new-post -->
+  </div><!--/.new-post-body-->
+</div><!--/.new-post-page -->
 
 <div>
   <!-- %= link_to "Back to posts", posts_path % -->

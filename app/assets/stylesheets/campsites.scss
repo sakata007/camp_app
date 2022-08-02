@@ -105,12 +105,16 @@ aside p {
 .item-image {
     height: 30vh;
     width: 100%;
-    box-shadow: 0 10px 10px 0 rgba(0, 0, 0, .1);;
+    box-shadow: 0 10px 10px 0 rgba(0, 0, 0, .1);
 }
 
 .item-title {
     color: #432;
     font-size: 1.35rem;
+}
+.wrapper-in-article {
+    width:90%;
+    // border: #432 1px solid;
 }
 
 
